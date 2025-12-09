@@ -144,6 +144,8 @@ return {
     require('dap-go').setup {
       delve = {
         detached = vim.fn.has 'win32' == 0,
+        -- If using wsl switch detached to:
+        -- detached = false
         coonsole = 'internalConsole',
         -- Send stdout/stderr to the internal DAP console (shown in dap-ui)
         -- console = 'internalConsole',
