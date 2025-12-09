@@ -1,0 +1,10 @@
+# --- Wofi Configuration ---
+show = drun
+prompt = What you need? 
+# allow_images = true
+insensitive = true
+width = 40%
+height = 35%
+location = center
+gtk_dark = true
+
