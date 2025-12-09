@@ -26,7 +26,9 @@ return {
       enabled = true,
     },
     filesystem = {
-
+      filtered_items = {
+        visible = true,
+      },
       window = {
         mappings = {
           ['<space>'] = 'none', -- don't open files by accident with space
