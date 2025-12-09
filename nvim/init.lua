@@ -166,6 +166,11 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Use smarter indentation defaults
+vim.opt.tabstop = 4 -- how wide a TAB appears
+vim.opt.shiftwidth = 4 -- how much indent uses
+vim.opt.softtabstop = 4
+vim.opt.expandtab = false -- Go uses tabs, not spaces
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
