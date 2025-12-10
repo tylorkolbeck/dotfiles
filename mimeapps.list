@@ -1,12 +1,12 @@
 [Added Associations]
-image/png=gimp-2.desktop;
+image/png=gimp-4.desktop;gimp-3.desktop;gimp-2.desktop;
 
 [Default Applications]
 image/bmp=org.gimp.GIMP.desktop
 image/gif=org.gimp.GIMP.desktop
 image/jpeg=org.gimp.GIMP.desktop
 image/jpg=org.gimp.GIMP.desktop
-image/png=gimp-2.desktop;
+image/png=gimp-4.desktop;
 image/tiff=org.gimp.GIMP.desktop
 image/webp=org.gimp.GIMP.desktop
 text/html=google-chrome.desktop

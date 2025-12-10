@@ -177,7 +177,31 @@ vim.opt.expandtab = false -- Go uses tabs, not spaces
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+-- Testing with neotest
 
+vim.keymap.set('n', '<leader>tn', function()
+  require('neotest').run.run()
+end, { desc = 'Run nearest test' })
+
+vim.keymap.set('n', '<leader>tf', function()
+  require('neotest').run.run(vim.fn.expand '%')
+end, { desc = 'Run file tests' })
+
+vim.keymap.set('n', '<leader>ta', function()
+  require('neotest').run.run(vim.fn.getcwd())
+end, { desc = 'Run all project tests' })
+
+vim.keymap.set('n', '<leader>ts', function()
+  require('neotest').summary.toggle()
+end, { desc = 'Toggle test summary' })
+
+vim.keymap.set('n', '<leader>tr', function()
+  require('neotest').output.open { enter = true }
+end, { desc = 'Open test result' })
+-- Build the project
+vim.keymap.set('n', '<leader>tb', function()
+  vim.cmd '!go build ./...'
+end, { desc = 'Build project' })
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -299,6 +323,39 @@ require('lazy').setup({
       },
     },
   },
+  {
+    'nvim-neotest/neotest',
+    requires = {
+      'nvim-neotest/neotest-go',
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-neotest/neotest-go',
+    },
+    config = function()
+      -- get neotest namespace (api call creates or returns namespace)
+      local neotest_ns = vim.api.nvim_create_namespace 'neotest'
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require('neotest').setup {
+        -- your neotest config here
+        adapters = {
+
+          require 'neotest-go' {
+            recursive_run = true,
+          },
+        },
+      }
+    end,
+  },
+
   {
     'nvim-tree/nvim-web-devicons',
     config = function()
