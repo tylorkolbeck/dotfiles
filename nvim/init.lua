@@ -224,6 +224,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Auto import on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    vim.lsp.buf.code_action {
+      context = { only = { 'source.organizeImports' } },
+      apply = true,
+    }
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

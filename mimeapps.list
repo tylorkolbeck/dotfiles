@@ -1,0 +1,16 @@
+[Added Associations]
+image/png=gimp-2.desktop;
+
+[Default Applications]
+image/bmp=org.gimp.GIMP.desktop
+image/gif=org.gimp.GIMP.desktop
+image/jpeg=org.gimp.GIMP.desktop
+image/jpg=org.gimp.GIMP.desktop
+image/png=gimp-2.desktop;
+image/tiff=org.gimp.GIMP.desktop
+image/webp=org.gimp.GIMP.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
